@@ -43,10 +43,10 @@ const Dashboard = () => {
 
   const handleClick = async (news) => {
     console.log(news.article)
-    let description = news.article.content;
-    console.log(description)
+    let newsContent = news.article.content;
+    console.log(newsContent)
     try {
-      const analysis = await axios.post(`http://localhost:3000/newz/analyze`,{description},{withCredentials:true})
+      const analysis = await axios.post(`http://localhost:3000/newz/digest`,{newsContent},{withCredentials:true})
       console.log(analysis)
       dispatch(setSingleNews(news.article.description))
       dispatch(setNewsAnalysis(analysis.data))
