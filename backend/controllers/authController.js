@@ -1,6 +1,7 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import createTokenAndSaveCookie from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
     try {
@@ -62,10 +63,7 @@ export const login = async (req, res) => {
             })
         };
 
-        const tokenData = {
-            userId: user._id
-        }
-        const token = await jwt.sign(tokenData, process.env.SECRET_KEY, { expiresIn: '1d' });
+        const token = createTokenAndSaveCookie(user,res)
 
         user = {
             _id: user._id,
@@ -73,7 +71,7 @@ export const login = async (req, res) => {
             email: user.email,
         }
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: 'strict' }).json({
+        return res.status(200).json({
             message: `Welcome back ${user.fullName}`,
             user,
             success: true

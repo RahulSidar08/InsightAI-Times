@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios"
 import { errorHandler, successHandler } from "../../utils/ToastMessage";
 import { ToastContainer } from "react-toastify";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import { setUser } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
 export const Login = () => {
   const {
     register,
@@ -11,14 +13,20 @@ export const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const onSubmit = async (data) => {
     
     try {
         const res = await axios.post("http://localhost:3000/user/login",data,{
             withCredentials:true
         })
-        console.log(res)
+        console.log(res.data.user)
+        dispatch(setUser(res.data.user))
         successHandler(res.data.message)
+        setTimeout(() => {
+          navigate("/dashboard")
+        }, 3000);
     } catch (error) {
         // console.log(error.response)
         if (error.response && error.response.data) {

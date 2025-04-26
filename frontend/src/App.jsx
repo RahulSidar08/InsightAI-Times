@@ -1,20 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "./components/Auth/Login";
 import { Signup } from "./components/Auth/Signup";
 import { Home } from "./components/Home";
 import Dashboard from "./components/Demodashboard";
 import NewsFilterCard from "./components/Dashboard/NewsFilterCard";
 import { NewsAnalysis } from "./components/NewsAnalysis";
+import { PageNotFound } from "./components/PageNotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: (
       <div>
-        <Home/>
+        <Home />
       </div>
     ),
   },
@@ -22,7 +24,7 @@ const appRouter = createBrowserRouter([
     path: "/login",
     element: (
       <div>
-        <Login/>
+        <Login />
       </div>
     ),
   },
@@ -38,15 +40,9 @@ const appRouter = createBrowserRouter([
     path: "/dashboard",
     element: (
       <div>
-        <Dashboard/>
-      </div>
-    ),
-  },
-  {
-    path: "/filter",
-    element: (
-      <div>
-        <NewsFilterCard/>
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
       </div>
     ),
   },
@@ -54,7 +50,17 @@ const appRouter = createBrowserRouter([
     path: "/newsAnalysis/:id",
     element: (
       <div>
-        <NewsAnalysis/>
+        <ProtectedRoute>
+          <NewsAnalysis />
+        </ProtectedRoute>
+      </div>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <div>
+        <PageNotFound />
       </div>
     ),
   },
