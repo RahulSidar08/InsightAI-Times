@@ -21,7 +21,7 @@ export const Signup = () => {
   const onSubmit = async (data) => {
     try {
         console.log(data)
-        const res = await axios.post("http://localhost:3000/user/register",data,{
+        const res = await axios.post("https://insightai-times.onrender.com/user/register",data,{
             withCredentials:true
         })
         console.log(res)
