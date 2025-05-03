@@ -18,9 +18,10 @@ const createTokenAndSaveCookie = (user, res) => {
     });
 
     res.cookie("jwt", token, {
-      httpOnly: true, // XSS protection
-      secure: process.env.NODE_ENV === "production", // Use secure cookies only in production
-      sameSite: "strict", // CSRF protection
+      httpOnly: true,
+      secure: true,
+      sameSite: "None", // required for cross-site cookie
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return token;
