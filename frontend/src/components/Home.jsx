@@ -5,7 +5,7 @@ export const Home = () => {
     <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800">
       {/* Navbar */}
       <nav className="flex justify-between items-center p-4 bg-white shadow">
-        <h1 className="text-2xl font-bold">🗞️ NewsDigest</h1>
+        <h1 className="text-2xl font-bold">InsightAI Times </h1>
         <div className="space-x-4">
           <Link href="#" className="hover:text-blue-600">
             Home
