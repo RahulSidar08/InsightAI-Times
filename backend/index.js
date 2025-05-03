@@ -28,7 +28,6 @@ app.get("/",(req,res)=>{
 app.use("/user",userRoute)
 app.use("/newz",newsRoute)
 
-const PORT = process.env.PORT || 8000;
 app.listen(port , () => {
 console.log(`Server is running on port ${port}`)
 })

@@ -5,7 +5,6 @@ import axios from "axios";
 dotenv.config();
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const HUGGINGFACE_API_KEY = process.env.HUGGINGFACE_API_KEY;
-
 export const analyzeNews = async (req, res) => {
   try {
     const { description } = req.body;
