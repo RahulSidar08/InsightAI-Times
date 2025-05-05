@@ -85,14 +85,11 @@ const Dashboard = () => {
                 key={article.publishedAt}
                 className="bg-white shadow-md rounded-2xl p-6 mb-6 border border-gray-100 hover:shadow-lg transition"
               >
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <p
                   className="text-xl font-semibold text-blue-600 hover:underline"
                 >
                   {article.title}
-                </a>
+                </p>
                 <p className="text-gray-600 mt-2">{article.description}</p>
                 <div className="mt-3 flex justify-between text-sm text-gray-500">
                   <span>
@@ -113,7 +110,7 @@ const Dashboard = () => {
                     </a>
                   </span>
                   <button
-                    onClick={() => handleClick(article)}
+                    onClick={() => handleClick({article})}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out"
                   >
                     Get Summary
