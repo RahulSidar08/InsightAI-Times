@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "./components/Auth/Login";
 import { Signup } from "./components/Auth/Signup";
 import { Home } from "./components/Home";
-import Dashboard from "./components/Demodashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import NewsFilterCard from "./components/Dashboard/NewsFilterCard";
 import { NewsAnalysis } from "./components/NewsAnalysis";
 import { PageNotFound } from "./components/PageNotFound";

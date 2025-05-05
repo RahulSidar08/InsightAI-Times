@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import NewsFilterCard from "./Dashboard/NewsFilterCard";
+import NewsFilterCard from "./NewsFilterCard";
 import { data, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { addNewsData, setNewsAnalysis, setSingleNews } from "../redux/newsSlice";
+import { addNewsData, setNewsAnalysis, setSingleNews } from "../../redux/newsSlice";
 const Dashboard = () => {
   const [newsData, setNewsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
