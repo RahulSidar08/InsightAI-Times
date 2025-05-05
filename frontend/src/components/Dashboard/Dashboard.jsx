@@ -70,48 +70,43 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex space-x-20">
-        <div className="mt-10 ml-5">
+      <div className="flex flex-col md:flex-row md:space-x-10">
+        <div className="mt-6 md:mt-10 md:ml-5">
           <NewsFilterCard onSelectCategory={setSelectedCategory} />
         </div>
-        <div className="min-h-screen bg-gray-50 p-6 mt-10">
+        <div className="min-h-screen bg-gray-50 p-4 sm:p-6 mt-6 md:mt-10 w-full">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-800 mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
               🗞 Your Personalized News Digest
             </h1>
 
             {newsData.map((article) => (
               <div
                 key={article.publishedAt}
-                className="bg-white shadow-md rounded-2xl p-6 mb-6 border border-gray-100 hover:shadow-lg transition"
+                className="bg-white shadow-md rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-100 hover:shadow-lg transition"
               >
-                <p
-                  className="text-xl font-semibold text-blue-600 hover:underline"
-                >
+                <p className="text-lg sm:text-xl font-semibold text-blue-600 hover:underline">
                   {article.title}
                 </p>
-                <p className="text-gray-600 mt-2">{article.description}</p>
-                <div className="mt-3 flex justify-between text-sm text-gray-500">
+                <p className="text-gray-600 mt-2 text-sm sm:text-base">
+                  {article.description}
+                </p>
+                <div className="mt-3 flex flex-col sm:flex-row sm:justify-between text-sm text-gray-500 gap-2">
                   <span>
                     📰 Source:{" "}
-                    {article.source
-                      ? `${article.source.name}`
-                      : "Source: Unknown"}
+                    {article.source ? article.source.name : "Unknown"}
                   </span>
-                  <span>{article.source.name}</span>
-                  <span>
-                    <a
-                      href={article.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xl font-semibold text-blue-600 hover:underline"
-                    >
-                      View Full News
-                    </a>
-                  </span>
+                  <a
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline font-medium"
+                  >
+                    View Full News
+                  </a>
                   <button
-                    onClick={() => handleClick({article})}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out"
+                    onClick={() => handleClick({ article })}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out w-full sm:w-auto"
                   >
                     Get Summary
                   </button>
