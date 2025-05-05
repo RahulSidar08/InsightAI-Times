@@ -14,8 +14,9 @@ const Dashboard = () => {
     const getNews = async () => {
       try {
         let res = await axios.get(
-          "https://newsapi.org/v2/everything?q=technology&language=en&apiKey=fe1d4a39adaa4102acadb067211992ba"
+          "https://insight-ai-times.vercel.app/newz/getNews"
         );
+        console.log(res)
         setNewsData(res.data.articles);
         dispatch(addNewsData(res.data.articles))
       } catch (error) {
@@ -34,7 +35,8 @@ const Dashboard = () => {
 
   const fetchNewsByCategory = async (category) => {
     try {
-      const res = await axios.get(`https://newsapi.org/v2/everything?q=${category}&language=en&apiKey=fe1d4a39adaa4102acadb067211992ba`);
+      const res = await axios.get(`https://insight-ai-times.vercel.app/newz/getNews/${category}`);
+      console.log(res)
       setNewsData(res.data.articles);
     } catch (err) {
       console.error("Failed to fetch news:", err);
@@ -46,7 +48,7 @@ const Dashboard = () => {
     let newsContent = news.article.content;
     console.log(newsContent)
     try {
-      const analysis = await axios.post(`http://localhost:3000/newz/digest`,{newsContent},{withCredentials:true})
+      const analysis = await axios.post(`https://insight-ai-times.vercel.app/newz/digest`,{newsContent},{withCredentials:true})
       console.log(analysis)
       dispatch(setSingleNews(news.article.description))
       dispatch(setNewsAnalysis(analysis.data))
