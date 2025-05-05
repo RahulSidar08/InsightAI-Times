@@ -91,11 +91,12 @@ const Dashboard = () => {
                 <p className="text-gray-600 mt-2 text-sm sm:text-base">
                   {article.description}
                 </p>
-                <div className="mt-3 flex flex-col sm:flex-row space-x-4 text-sm text-gray-500 gap-2">
-                  <span>
-                    📰 Source:{" "}
-                    {article.source ? article.source.name : "Unknown"}
-                  </span>
+                <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-500 gap-3 sm:gap-4 flex-wrap">
+                  <div className="flex-1">
+                    📰 <span className="font-medium">Source:</span>{" "}
+                    {article.source?.name || "Unknown"}
+                  </div>
+
                   <a
                     href={article.url}
                     target="_blank"
@@ -104,6 +105,7 @@ const Dashboard = () => {
                   >
                     View Full News
                   </a>
+
                   <button
                     onClick={() => handleClick({ article })}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out w-full sm:w-auto"
