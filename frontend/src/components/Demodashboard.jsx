@@ -14,7 +14,7 @@ const Dashboard = () => {
     const getNews = async () => {
       try {
         let res = await axios.get(
-          "https://insight-ai-times.vercel.app/newz/getNews"
+          "https://insightai-times.onrender.com/newz/getNews"
         );
         console.log(res)
         setNewsData(res.data.articles);
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   const fetchNewsByCategory = async (category) => {
     try {
-      const res = await axios.get(`https://insight-ai-times.vercel.app/newz/getNews/${category}`);
+      const res = await axios.get(`https://insightai-times.onrender.com/newz/getNews/${category}`);
       console.log(res)
       setNewsData(res.data.articles);
     } catch (err) {
@@ -48,7 +48,7 @@ const Dashboard = () => {
     let newsContent = news.article.content;
     console.log(newsContent)
     try {
-      const analysis = await axios.post(`https://insight-ai-times.vercel.app/newz/digest`,{newsContent},{withCredentials:true})
+      const analysis = await axios.post(`https://insightai-times.onrender.com/newz/digest`,{newsContent},{withCredentials:true})
       console.log(analysis)
       dispatch(setSingleNews(news.article.description))
       dispatch(setNewsAnalysis(analysis.data))
