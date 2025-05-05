@@ -91,7 +91,7 @@ const Dashboard = () => {
                 <p className="text-gray-600 mt-2 text-sm sm:text-base">
                   {article.description}
                 </p>
-                <div className="mt-3 flex flex-col sm:flex-row sm:justify-between text-sm text-gray-500 gap-2">
+                <div className="mt-3 flex flex-col sm:flex-row space-x-4 text-sm text-gray-500 gap-2">
                   <span>
                     📰 Source:{" "}
                     {article.source ? article.source.name : "Unknown"}
