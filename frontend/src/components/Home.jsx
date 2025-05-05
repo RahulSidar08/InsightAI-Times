@@ -10,9 +10,6 @@ export const Home = () => {
           <Link href="#" className="hover:text-blue-600">
             Home
           </Link>
-          <Link href="#" className="hover:text-blue-600">
-            About
-          </Link>
           <Link to="/login" className="hover:text-blue-600">
             Login
           </Link>
@@ -54,7 +51,7 @@ export const Home = () => {
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-2">📬 Daily Digest</h3>
-          <p>Read on your dashboard or receive an email every day.</p>
+          <p>Read on your dashboard and save it by summarise PDF</p>
         </div>
       </section>
 
